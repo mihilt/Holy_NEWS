@@ -54,12 +54,8 @@ const countries = [
         text : '일본'
     },
     {
-        name : 'au',
-        text : '호주'
-    },
-    {
-        name : 'cn',
-        text : '중국'
+        name : 'ru',
+        text : '러시아'
     }
 ];
 
@@ -90,8 +86,8 @@ const Sidebar = ({ selectCategory, category, country, selectCountry }) => {
                             {countries.map(c => (
                                 <MenuItem className=""
                                     key={c.name}
-                                    active={category === c.name}
-                                    onClick={() => selectCategory(c.name)}>
+                                    active={country === c.name}
+                                    onClick={() => selectCountry(c.name)}>
                                     {c.text}
                                 </MenuItem>
                             ))}

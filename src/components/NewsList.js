@@ -14,11 +14,14 @@ const NewsList = ({ category, country }) =>{
             setLoading(true);
             try{
                 const categoryQuery = category === 'all' ? '' : `&category=${category}`;
-                // const countryQuery = country === `country=${country}`;
+                const countryQuery = `country=${country}`;
+                
+                console.log("category = " + category);
+                console.log("country = " + country);
 
                 const response = await axios.get(
-                    // `http://newsapi.org/v2/top-headlines?${countryQuery}${categoryQuery}&apiKey=1f03b404edf94345935944647d375df6`
-                    `http://newsapi.org/v2/top-headlines?country=kr${categoryQuery}&apiKey=1f03b404edf94345935944647d375df6`
+                    `http://newsapi.org/v2/top-headlines?${countryQuery}${categoryQuery}&pageSize=24&apiKey=1f03b404edf94345935944647d375df6`
+                    // `http://newsapi.org/v2/top-headlines?country=kr${categoryQuery}&apiKey=1f03b404edf94345935944647d375df6`
                 );
                 setArticles(response.data.articles);
             } catch(e){
