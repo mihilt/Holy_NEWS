@@ -6,13 +6,18 @@ import SideBar from './components/SideBar/SideBar';
 import '../src/tailwind/tailwind.css';
 
 const App = () => {
-  const[category, setCategory] = useState('all');
-  const onSelect = useCallback(category => setCategory(category), []);
+  const[ category, setCategory ] = useState('all');
+  const selectCategory = useCallback(category => setCategory(category), []);
+
 
   return(
     <div className="flex"> 
-      <SideBar category = { category } onSelect = { onSelect }/>
-      <NewsList category = { category }/>
+      <SideBar category = { category } 
+               selectCategory = { selectCategory } 
+               />
+
+      <NewsList category = { category }
+                />
     </div>
   );
 };

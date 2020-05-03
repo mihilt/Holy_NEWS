@@ -40,14 +40,37 @@ const categories = [
     }
 ];
 
+const countries = [
+    {
+        name : 'kr',
+        text : '한국'
+    },
+    {
+        name : 'us',
+        text : '미국'
+    },
+    {
+        name : 'jp',
+        text : '일본'
+    },
+    {
+        name : 'au',
+        text : '호주'
+    },
+    {
+        name : 'cn',
+        text : '중국'
+    }
+];
+
 const JustSpace = styled.div`
 margin-left: 250px;
 `
 
-const Sidebar = ({ onSelect, category }) => {
+const Sidebar = ({ selectCategory, category, country, selectCountry }) => {
     return(
         <>
-            <ProSidebar className = "">
+            <ProSidebar id = "toMakeFixed">
                 <SidebarHeader>
                     <p className = "text-center m-5 text-2xl">Holy NEWS</p>
                 </SidebarHeader>
@@ -58,22 +81,20 @@ const Sidebar = ({ onSelect, category }) => {
                                 <MenuItem className=""
                                     key={c.name}
                                     active={category === c.name}
-                                    onClick={() => onSelect(c.name)}>
+                                    onClick={() => selectCategory(c.name)}>
                                     {c.text}
                                 </MenuItem>
                             ))}
                         </SubMenu>
                         <SubMenu title="언어">
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-                            <MenuItem>Component</MenuItem>
-  
+                            {countries.map(c => (
+                                <MenuItem className=""
+                                    key={c.name}
+                                    active={category === c.name}
+                                    onClick={() => selectCategory(c.name)}>
+                                    {c.text}
+                                </MenuItem>
+                            ))}
                         </SubMenu>
                     </Menu>
                 </SidebarContent>

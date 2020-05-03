@@ -5,7 +5,7 @@ import { SpinnerContainer, SpinnerOverlay } from './WithSpinner.component';
 import '../tailwind/tailwind.css'
 
 
-const NewsList = ({ category }) =>{
+const NewsList = ({ category, country }) =>{
     const [articles,setArticles] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -13,9 +13,12 @@ const NewsList = ({ category }) =>{
         const fetchData = async () => {
             setLoading(true);
             try{
-                const query = category === 'all' ? '' : `&category=${category}`;
+                const categoryQuery = category === 'all' ? '' : `&category=${category}`;
+                // const countryQuery = country === `country=${country}`;
+
                 const response = await axios.get(
-                    `http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=1f03b404edf94345935944647d375df6`
+                    // `http://newsapi.org/v2/top-headlines?${countryQuery}${categoryQuery}&apiKey=1f03b404edf94345935944647d375df6`
+                    `http://newsapi.org/v2/top-headlines?country=kr${categoryQuery}&apiKey=1f03b404edf94345935944647d375df6`
                 );
                 setArticles(response.data.articles);
             } catch(e){
@@ -24,7 +27,7 @@ const NewsList = ({ category }) =>{
             setLoading(false);
         };
         fetchData();
-    }, [category]);
+    }, [category, country]);
 
     if(loading){
         return(
