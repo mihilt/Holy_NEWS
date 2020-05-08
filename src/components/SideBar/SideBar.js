@@ -1,6 +1,4 @@
-import React from 'react';
-
-import styled from 'styled-components';
+import React, { useState } from 'react';
 
 import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
 
@@ -12,6 +10,13 @@ import '../../tailwind/tailwind.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+import {
+    JustSpace,
+    SidebarDiv,
+    MenuIcon,
+    MenuClose
+} from './SideBar.styles';
 
 const categories = [
     {
@@ -63,71 +68,18 @@ const countries = [
     }
 ];
 
-
-
-const JustSpace = styled.div`
-margin-left: 250px;
-
-@media (max-width: 640px) { 
-    display:none;
-}	
-`;
-
-const SidebarDiv = styled.div`
-position: relative;
-transition: all .6s ease-in-out;
-
-@media (max-width: 640px) { 
-    transform: translateX(-250px);
-    transition: all .6s ease-in-out;
-}	
-`;
-
-const MenuIcon = styled.div`
-position: fixed;
-display: flex;
-top: 5px;
-left: 10px;
-align-items: center;
-justify-content: center;
-background-color: #e7e7e7;
-border-radius: 50%;
-z-index: 1;
-cursor: pointer;
-padding: 12px;
-
-@media (min-width: 640px) { 
-    visibility: hidden;
-}	
-`;
-
-const MenuClose = styled.div`
-position: absolute;
-visibility: visible;
-top: 8px;
-right: 12px;
-cursor: pointer;
-font-size: 20px;
-color: #ddd;
-
-@media (min-width: 640px) { 
-    visibility: hidden;
-}	
-`;
-
-
-
 const Sidebar = ({ selectCategory, category, country, selectCountry }) => {
+    const [toggle,setToggle] = useState(false);
 
     return(
         <>  
-            <MenuIcon>
+            <MenuIcon  onClick = {() => toggle === true ? setToggle(false) : setToggle(true)}>
                 <FontAwesomeIcon icon={ faBars } />
             </MenuIcon>
 
-            <SidebarDiv>
+            <SidebarDiv toggle = { toggle }>
                 <ProSidebar id = "toMakeFixed">
-                    <MenuClose>
+                    <MenuClose onClick = {() => toggle === true ? setToggle(false) : setToggle(true)}>
                         <FontAwesomeIcon icon={ faTimes } />
                     </MenuClose>
                     <SidebarHeader>
@@ -171,6 +123,5 @@ const Sidebar = ({ selectCategory, category, country, selectCountry }) => {
         </>
     );
 };
-
 
 export default Sidebar;
