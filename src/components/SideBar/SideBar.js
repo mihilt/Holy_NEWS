@@ -68,7 +68,11 @@ const Sidebar = ({ selectCategory, category, country, selectCountry }) => {
         <>
             <ProSidebar id = "toMakeFixed">
                 <SidebarHeader>
-                    <p className = "text-center m-5 text-2xl">Holy NEWS</p>
+                    <p className = "text-center m-5 text-2xl">
+                        <a href="/">
+                            Holy NEWS
+                        </a>
+                    </p>
                 </SidebarHeader>
                 <SidebarContent>
                     <Menu iconShape="square">
