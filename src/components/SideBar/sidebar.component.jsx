@@ -17,7 +17,7 @@ import "./sidebarStyles.scss";
 import "../../tailwind/tailwind.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/fontawesome-free-brands";
 
 import { JustSpace, SidebarDiv, MenuIcon, MenuClose } from "./sidebar.styles";
@@ -100,20 +100,6 @@ const Sidebar = ({ selectCategory, category, country, selectCountry }) => {
                         </p>
                     </SidebarHeader>
                     <SidebarContent>
-                        <div className="my-2 relative mx-2 text-gray-600">
-                            <input
-                                style={{ width: "235px" }}
-                                className="border-2 border-gray-300 bg-white h-10 px-3 pr-8 rounded-lg text-sm focus:outline-none"
-                                name="search"
-                                placeholder="검색"
-                            />
-                            <button
-                                type="submit"
-                                className="absolute right-0 top-0 mt-2 mr-3"
-                            >
-                                <FontAwesomeIcon icon={faSearch} />
-                            </button>
-                        </div>
                         <Menu iconShape="square">
                             <SubMenu defaultOpen="true" title="카테고리">
                                 {categories.map((c) => (
@@ -127,7 +113,7 @@ const Sidebar = ({ selectCategory, category, country, selectCountry }) => {
                                     </MenuItem>
                                 ))}
                             </SubMenu>
-                            <SubMenu title="언어">
+                            <SubMenu defaultOpen="true" title="언어">
                                 {countries.map((c) => (
                                     <MenuItem
                                         className=""
