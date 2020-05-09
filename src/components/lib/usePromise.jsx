@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-export default function usePromise(promiseCreator, deps){
+export default function usePromise(promiseCreator, deps) {
     const [loading, setLoading] = useState(false);
     const [resolved, setResolved] = useState(null);
     const [error, setError] = useState(null);
@@ -8,7 +8,7 @@ export default function usePromise(promiseCreator, deps){
     useEffect(() => {
         const process = async () => {
             setLoading(true);
-            try{
+            try {
                 const resolved = await promiseCreator();
                 setResolved(resolved);
             } catch (e) {
